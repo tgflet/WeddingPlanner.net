@@ -1,0 +1,54 @@
+@model List<Wedding>
+<div class="row text-right">
+    <p class="text-success">Welcome to the Wedding Planner</p>
+    <a href="/logout">Logout</a>
+</div>
+<div class="container">
+     <table class="table table-striped table-border">
+  <thead>
+    <tr>
+      <th scope="col">Wedding</th>
+      <th scope="col">Date</th>
+      <th scope="col">Guest</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{
+        foreach(var w in Model){
+            <tr>
+            <td scope="col"><a href="/weddings/@w.WeddingId">@w.Wedder1 & @w.Wedder2</a></td>
+            <td scope="col">@w.Date.ToString("MMMM dd, yyyy")</td>
+            <td scope="col">@w.Guests.Count</td>
+            @if(@w.Status == 1){
+              <td scope="col">
+                <form action="/delete" method="post">
+                <input type="hidden" name="wedding" value="@w.WeddingId">
+                <input type="submit" value="Delete">
+                </form>
+              </td>
+            }
+            else if(@w.Status ==2){
+              <td scope="col">
+                <form action="/unrsvp" method="post">
+                <input type="hidden" name="wedding" value="@w.WeddingId">
+                <input type="submit" value="UnRSVP">
+                </form>
+              </td>
+            }
+            else if(@w.Status == 3){
+            <td scope="col">
+              <form action="/rsvp" method="post">
+              <input type="hidden" name="wedding" value="@w.WeddingId">
+              <input type="submit" value="RSVP">
+              </form>
+
+            </td>
+            }
+            </tr>
+        }
+    }
+  </tbody>
+</table>
+<a href="/newwedding">Add a new Wedding</a>
+</div>

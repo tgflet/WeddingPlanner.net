@@ -1,0 +1,14 @@
+@model LoginUser
+<form action="verify" method="post">
+    <div class="row">
+        
+        <div class="col-5">
+            <p><span asp-validation-for="Email" class="text-danger"></span></p>
+            <p></p><label asp-for="Email"></label></p>
+            <input asp-for="Email">
+            <p><span asp-validation-for="Password" class="text-danger"></span></p>
+            <p><label asp-for="Password"></label></p>
+            <input asp-for="Password">
+            <p><input type="submit" class="btn btn-success" value="Log in Now"></p>
+            </form>
+        </div>

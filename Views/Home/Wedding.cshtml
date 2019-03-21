@@ -1,0 +1,22 @@
+@model Wedding
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand">@Model.Wedder1 & @Model.Wedder2's Wedding</span>
+    <a href="/registry">Registry</a> | <a href="/logout">Log Out</a>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-6">
+        <h3>Date: @Model.Date.ToString("MMMM dd, yyyy")</h3>
+        <ul>Guests:
+            @foreach(var guest in Model.Guests){
+                <li>@guest.guest.FirstName @guest.guest.LastName</li>
+            }
+            
+        </ul>
+    </div>
+    <div class="col-6">
+        <h3>Location: @Model.venue.Name</h3>
+        <p>@Model.venue.StreetAddress</p>
+        <p>@Model.venue.City, @Model.venue.State @Model.venue.Zipcode</p>
+    </div>
+</div>

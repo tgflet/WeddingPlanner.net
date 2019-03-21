@@ -1,0 +1,29 @@
+@model Wedding
+<h1>Plan a Wedding</h1>
+<div class="row">
+    <div class="col">
+        <form action="/createwedding" method="post">
+            <p><span asp-validation-for="Wedder1" class="text-danger"></span></p>
+            <p></p><label asp-for="Wedder1"></label></p>
+            <input asp-for="Wedder1">
+            <p><span asp-validation-for="Wedder2" class="text-danger"></span></p>
+            <p><label asp-for="Wedder2"></label></p>
+            <input asp-for="Wedder2">
+            <p><span asp-validation-for="Date" class="text-danger"></span></p>
+            <p><label asp-for="Date"></label></p>
+            <input asp-for="Date">
+            <p><span asp-validation-for="LocationId" class="text-danger"></span></p>
+            <p><label asp-for="LocationId"></label></p>
+            <select asp-for="LocationId">
+                <option value="">Select a Location</option>
+                @{
+                    foreach(var venue in ViewBag.venues){
+                        <option value="@venue.LocationId">@venue.Name</option>
+                    }
+                }
+            </select>
+            <p><input type="submit" class="btn btn-success" value="Add Wedding"></p>
+            </form>
+            <br>
+            
+    </div>

@@ -1,0 +1,32 @@
+@model Location
+<h1>Add a Location</h1>
+<div class="row">
+    <form action="/createlocation" method="post">
+        <p><span asp-validation-for="Name" class="text-danger"></span></p>
+            <p><label asp-for="Name"></label></p>
+            <input asp-for="Name">
+            <p><span asp-validation-for="StreetAddress" class="text-danger"></span></p>
+            <p><label asp-for="StreetAddress"></label></p>
+            <input asp-for="StreetAddress">
+            <p><span asp-validation-for="StreetAddress2" class="text-danger"></span></p>
+            <p><label asp-for="StreetAddress2"></label></p>
+            <input asp-for="StreetAddress2">
+            <p><span asp-validation-for="City" class="text-danger"></span></p>
+            <p><label asp-for="City"></label></p>
+            <input asp-for="City">
+            <p><span asp-validation-for="State" class="text-danger"></span></p>
+            <p><label asp-for="State"></label></p>
+            <select asp-for="State">
+                <option value="">State</option>
+                @{
+                    foreach(var state in @ViewBag.states){
+                        <option value="@state">@state</option>
+                    }
+                }
+            </select>
+            <p><span asp-validation-for="Zipcode" class="text-danger"></span></p>
+            <p><label asp-for="Zipcode"></label></p>
+            <input asp-for="Zipcode">
+            <input type="submit" value="Add a new Location">
+            </form>
+</div>
